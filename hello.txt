@@ -1,1 +1,5 @@
-dafdfsf
+#이름:
+#학번:
+#각오:
+
+print('Hello, Word');
