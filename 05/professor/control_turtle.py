@@ -1,26 +1,25 @@
 import turtle
 
-def run_turtle(deg, dist):
+def run_turtle(deg, dist = 50):
     turtle.setheading(deg)
     turtle.forward(dist)
     turtle.stamp()
 
-
 def move_up():
-    run_turtle(90, 50)
-    print('UP')
+    run_turtle(90)
+    #print('UP')
 
 def move_right():
-    run_turtle(0, 50)
-    print('RIGHT')
+    run_turtle(0)
+    #print('RIGHT')
 
 def move_down():
-    run_turtle(270, 50)
-    print('DOWN')
+    run_turtle(-90)
+    #print('DOWN')
 
 def move_left():
-    run_turtle(180, 50)
-    print('LEFT')
+    run_turtle(180)
+    #print('LEFT')
 
 def finish():
     turtle.bye()    
