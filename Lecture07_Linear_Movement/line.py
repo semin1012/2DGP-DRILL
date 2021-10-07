@@ -89,17 +89,16 @@ prepare_turtle_canvas()
 
 
 for t in range(0, 360):
-    a = 100
+    a = 50
     b = 200
-    c = 100
-    d = 200
+    # c = 50
+    # d = 200
 
     j = 3
-    k = 0.50
 
     x = (a - b) * math.cos(t) + b * math.cos(t * ((a / b) - 1))
     y = (a - b) * math.sin(t) - b * math.sin(t * ((a / b) - 1))
-    #k = a / b
+    # k = a / b
 
     # x = math.cos(a * t) - math.cos(b*t) ** j
     # y = math.sin(c * t) - math.sin(d * t) ** k
