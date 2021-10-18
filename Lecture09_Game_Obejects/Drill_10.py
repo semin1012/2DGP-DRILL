@@ -29,14 +29,17 @@ class Ball:
         self.speed = random.randint(2, 8)
         self.big_image = load_image('ball41x41.png')
         self.small_image = load_image('ball21x21.png')
+        print(self.x)
 
     def update(self):
         if self.image_rand == 1:
             if self.y - self.speed >= 55:
                 self.y -= self.speed
+            else: self.y = 55
         elif self.image_rand == 2:
             if self.y - self.speed >= 65:
                 self.y -= self.speed
+            else: self.y = 65
 
     def draw(self):
         if self.image_rand == 1:
