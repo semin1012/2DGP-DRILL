@@ -4,7 +4,7 @@ import random
 # Game object class here
 class BackGround:
     def __init__(self):
-        self.image = load_image('mario_background1.png')
+        self.image = load_image('mario_background4.png')
 
     def draw(self):
         self.image.clip_draw(0 + x, 0, 800, 600, 400, 300)

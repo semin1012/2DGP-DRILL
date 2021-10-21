@@ -26,7 +26,7 @@ class Ball:
     def __init__(self):
         self.x, self.y = random.randint(40, 760), 599
         self.image_rand = random.randint(1, 2 + 1)  # 1이면 small, 2면 big
-        self.speed = random.randint(2, 8)
+        self.speed = random.randint(1, 10)
         self.big_image = load_image('ball41x41.png')
         self.small_image = load_image('ball21x21.png')
         print(self.x)
