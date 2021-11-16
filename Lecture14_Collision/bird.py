@@ -29,6 +29,8 @@ class Bird:
         self.velocity += RUN_SPEED_PPS
         print(self.velocity)
 
+    def get_bb(self):
+        return self.x - 50, self.y - 50, self.x + 50, self.y + 50
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 14
@@ -50,7 +52,7 @@ class Bird:
         if self.image_num == 0:
             self.image.clip_draw(int(self.frame) * 100, 0, 100, 100, self.x, self.y)
         else:
-            self.image.clip_composite_draw(int(self.frame) * 100, 0, 100, 100, 3.141592 / -1, '', self.x, self.y, 100, 100)
+            self.image.clip_composite_draw(int(self.frame) * 100, 0, 100, 100, -3, '', self.x, self.y, 100, 100)
 
 
 

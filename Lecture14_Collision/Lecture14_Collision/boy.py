@@ -137,7 +137,7 @@ class Boy:
 
     def get_bb(self):
         # fill here
-       return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+        return 0, 0, 0, 0
 
 
     def fire_ball(self):
@@ -160,8 +160,7 @@ class Boy:
         self.cur_state.draw(self)
         self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % get_time(), (255, 255, 0))
         #fill here
-        draw_rectangle(*self.get_bb())
-        # 튜플을 파라미터 리스트로 만들어주는 * 기호
+
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
