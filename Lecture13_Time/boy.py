@@ -3,6 +3,9 @@ from pico2d import *
 from ball import Ball
 
 import game_world
+import server
+import collision
+
 
 # Boy Run Speed
 # fill expressions correctly
@@ -167,6 +170,14 @@ class Boy:
             self.cur_state.exit(self, event)
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
+
+        # 소년과 볼들이 만나면 볼을 없앤다
+        for ball in server.balls.copy():    # copy를 써야 한다
+            if collision.collide(self, ball):
+                # 볼을 없앴다... world에서도 없애고, server.balls 에서도 없애야겠지
+                game_world.remove_object(ball)
+                server.balls.remove(ball)
+
 
     def draw(self):
         self.cur_state.draw(self)

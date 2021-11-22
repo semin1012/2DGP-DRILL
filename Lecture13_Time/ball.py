@@ -20,6 +20,8 @@ class Ball:
         if Ball.image == None:
             Ball.image = load_image('ball21x21.png')
         self.x, self.y, self.fall_speed = random.randint(0, 1600-1), random.randint(600, 1000), FALL_SPEED_PPS
+        self.parent = None
+        self.rx, self.ry = 0, 0
 
     def get_bb(self):
         # fill here
@@ -30,11 +32,14 @@ class Ball:
         draw_rectangle(*self.get_bb())
 
     def update(self):
-        self.y -= self.fall_speed * game_framework.frame_time
+        if self.parent is None: # 볼은 부모가 없으면
+            self.y -= self.fall_speed * game_framework.frame_time
+        else:
+            self.x, self.y = self.parent.x + self.rx, self.parent.y + self.ry
 
     def stop(self):
         self.fall_speed = 0
-        self.y = 60
+        # self.y = 60
 
     def brick_stop(self):
         self.fall_speed = 0
@@ -43,8 +48,12 @@ class Ball:
         elif Brick.dir == 1:
             self.x -= Brick.move
 
-
     def ball_stop(self):
         self.fall_speed = 0
+
+    def set_parent(self, brick):
+        self.parent = brick
+        self.rx, self.ry = self.x - brick.x, self.y - brick.y # 발판에 대한 상대적인 x, y의 위치
+
 
 
