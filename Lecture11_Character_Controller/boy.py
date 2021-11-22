@@ -27,6 +27,7 @@ class Boy:
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
+
     def add_event(self, event):
         self.event_que.insert(0, event)
     def update(self):
