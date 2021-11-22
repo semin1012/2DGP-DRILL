@@ -25,8 +25,8 @@ def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
     left_b, bottom_b, right_b, top_b = b.get_bb()
 
-    if left_a > right_b - 20: return False
-    if right_a < left_b + 20: return False
+    if left_a > right_b - 10: return False
+    if right_a < left_b + 10: return False
     if top_a < bottom_b: return False
     if bottom_a > top_b - 30: return False
 
@@ -84,14 +84,15 @@ def update():
             game_world.remove_object(ball)
             # print("COLLISION")
     for ball in balls:
+        for ball2 in balls:
+            if collide(ball2, ball):
+                ball.ball_stop()
+    for ball in balls:
         if collide(grass, ball):
             ball.stop()
     for ball in balls:
         if collide(brick, ball):
             ball.brick_stop()
-    # for ball in balls:
-    #     if collide(ball, ball):
-    #         ball.brick_stop()
     # delay(0.1)
 
 

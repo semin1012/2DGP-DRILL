@@ -46,6 +46,5 @@ class Ball:
 
     def ball_stop(self):
         self.fall_speed = 0
-        self.y = 60 + 10
 
 
