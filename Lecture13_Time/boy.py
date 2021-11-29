@@ -3,6 +3,9 @@ from pico2d import *
 from ball import Ball
 
 import game_world
+import server
+import collision
+
 
 # Boy Run Speed
 # fill expressions correctly
@@ -156,6 +159,10 @@ class Boy:
     def add_event(self, event):
         self.event_que.insert(0, event)
 
+    def get_bb(self):
+        # fill here
+       return self.x - 50, self.y - 50, self.x + 50, self.y + 50
+
     def update(self):
         self.cur_state.do(self)
         if len(self.event_que) > 0:
@@ -164,10 +171,19 @@ class Boy:
             self.cur_state = next_state_table[self.cur_state][event]
             self.cur_state.enter(self, event)
 
+        # 소년과 볼들이 만나면 볼을 없앤다
+        for ball in server.balls.copy():    # copy를 써야 한다
+            if collision.collide(self, ball):
+                # 볼을 없앴다... world에서도 없애고, server.balls 에서도 없애야겠지
+                game_world.remove_object(ball)
+                server.balls.remove(ball)
+
+
     def draw(self):
         self.cur_state.draw(self)
         # fill here
         self.font.draw(self.x - 60, self.y + 50, '(Time: %3.2f)' % get_time(), (255, 255, 0))
+        draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
